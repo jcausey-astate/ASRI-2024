@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "ASRI"
+version = "0.1.0"
+description = ""
+authors = ["Jason L Causey <11724284+jcausey-astate@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+matplotlib = "*"
+ipykernel = "*"
+numpy = "*"
+scipy = "*"
+scikit-learn = "*"
+datasets = "*"
+xlrd = "*"
+arff = "*"
+palmerpenguins = "*"
+seaborn = "*"
+scikit-plot = "*"
+jupytext = "*"
+plotly = "*"
+black = {extras = ["jupyter"], version = "^24.4.2"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

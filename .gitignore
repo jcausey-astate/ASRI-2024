@@ -1,0 +1,15 @@
+**/.DS_Store
+**/__MACOS__
+**/*.pyc
+**/*.bak
+**/~*
+**/.venv
+**/.vscode
+**/.ipynb_checkpoints
+**/*.zip
+**/*.data
+**/*.names
+DryBeanDataset
+z_recordings
+
+/.quarto/

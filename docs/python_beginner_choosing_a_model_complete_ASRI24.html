@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-99.9.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ASRI-2024 – python_beginner_choosing_a_model_complete_asri24</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<p><a href="https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_beginner_choosing_a_model_complete_ASRI24.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<section id="choosing-and-evaluating-machine-learning-models-in-python-beginner" class="level1">
+<h1>Choosing and Evaluating Machine Learning Models in Python (Beginner)</h1>
+<section id="asri-2024" class="level2">
+<h2 class="anchored" data-anchor-id="asri-2024">ASRI 2024</h2>
+<p><img src="https://jcausey-astate.github.io/ASRI-2024/images/choosing_and_evaluating_ml_models_in_python_title_card.svg" class="img-fluid"></p>
+<p>This notebook shows some introductory examples from the “Choosing and Evaluating Machine Learning Models in Python” workshop session.</p>
+<p>The notebook uses the following modules:</p>
+<ul>
+<li><code>matplotlib</code> : Provides basic graphing/charting.</li>
+<li><code>numpy</code> : Allows matrix and vector/array math.</li>
+<li><code>pandas</code> : Provides DataFrame functionality.</li>
+<li><code>seaborn</code> : Works with <code>matplotlib</code> to provide nicer graphs.</li>
+<li><code>sklearn</code> : Scikit-Learn provides machine learning and data manipulation tools.</li>
+</ul>
+<p>We will rely heavily on the Scikit-Learn library for models, metrics, and experimental design tools. See the full documentation for this fantastic library at <a href="https://scikit-learn.org" class="uri">https://scikit-learn.org</a>.</p>
+<hr>
+<p>In this workshop, we will focus on the big picture questions of model selection and evaluation:</p>
+<ul>
+<li><strong>Model Selection :</strong> How to you begin to choose a model?
+<ul>
+<li>Prediction vs Exploration</li>
+<li>Regression vs Classification</li>
+<li>Supervised vs Unsupervised</li>
+<li>General model types and assumptions</li>
+<li>Some common and useful models to consider.</li>
+</ul></li>
+<li><strong>Evaluation Metrics :</strong> How do you know when your model is doing a good job?</li>
+</ul>
+</section>
+<section id="model-selection-how-to-you-begin-to-choose-a-model" class="level2">
+<h2 class="anchored" data-anchor-id="model-selection-how-to-you-begin-to-choose-a-model">Model Selection : How to you begin to choose a model?</h2>
+<section id="prediction-vs-exploration" class="level3">
+<h3 class="anchored" data-anchor-id="prediction-vs-exploration">Prediction vs Exploration</h3>
+<p><strong>Prediction</strong> means that you have some value, label, or other concept that you want to be able to predict in the future, given some measurements or information (we will call these “features” or “random variables” or “predictors”) from a sample. For example, you might want to predict whether a mushroom is edible based on observed facts about it such as gill type, spore print color, cap color, etc.</p>
+<p>A predictive analysis implies that you <em>already know what you are looking for</em> – you have a value that is important to you (but might be hard to directly measure), and some predictive measurements that you believe might be able to determine that value.</p>
+<p><strong>Exploration</strong> means that you are more interested in using a dataset to discover interesting facts that might suggest something about how the world works. For example, you might want to figure out whether you can identify separate groups of plants within a field that are growing differently in some way from other plants.</p>
+<p>An exploratory analysis is an exercise in <em>curiosity</em>. You are looking for interesting relationships or facts in a dataset that might be useful to you in some way.</p>
+</section>
+<section id="regression-vs-classification" class="level3">
+<h3 class="anchored" data-anchor-id="regression-vs-classification">Regression vs Classification</h3>
+<p><strong><em>Regression</em></strong> models try to compute a <em>continuous</em> output value (dependent variable) for a given <em>sample</em>.</p>
+<ul>
+<li><strong><em>Continuous</em></strong> values are numeric values that are allowed to take on any value within some range.</li>
+<li>A <strong><em>sample</em></strong> consists of all of the experimental information gathered for one item in the dataset. Sometimes a <em>sample</em> is called an <em>object</em> or <em>item</em>. Usually samples are arranged as <em>rows</em> in tabular datasets (CSV files, Excel spreadsheets, or similar).</li>
+</ul>
+<p><strong><em>Classification</em></strong> is the process of determining a <em>categorical label</em> given the <em>random variables</em> for a given <em>sample</em>.</p>
+<ul>
+<li><strong><em>Categorical</em></strong> values are allowed to take on only a finite (usually small) set of values. Categorical variables are usually non-numeric, but are sometimes encoded as numbers. Sometimes we refer to values of this type as <em>labels</em>, <em>factors</em>, or <em>classes</em>.</li>
+</ul>
+<p>A <strong><em>random variable</em></strong>, sometimes called an <em>input variable</em>, <em>measurement</em>, or <em>feature</em>, is the recorded value for some property of the sample that was measured in the experiment, e.g.&nbsp;“height”, “age”, “flower color”, etc.</p>
+</section>
+<section id="supervised-vs-unsupervised" class="level3">
+<h3 class="anchored" data-anchor-id="supervised-vs-unsupervised">Supervised vs Unsupervised</h3>
+<p><strong><em>Supervised</em></strong> models require a training dataset that has the <em>correct</em> output value (dependent variable) already determined. The model is trained (or “fit”) so that the correct output value is produced given the random variables in the sample for each sample in the training data.</p>
+<ul>
+<li>In Scikit-Learn: <a href="https://scikit-learn.org/stable/supervised_learning.html" class="uri">https://scikit-learn.org/stable/supervised_learning.html</a></li>
+</ul>
+<p><strong><em>Unsupervised</em></strong> models are able to produce an estimate for the dependent variable without the need to provide a pre-labeled training dataset. Some unsupervised models focus on establishing similarities between groups of samples, rather than computing an output value. (Clustering models do this, for example.)</p>
+<ul>
+<li>In Scikit-Learn: <a href="https://scikit-learn.org/stable/unsupervised_learning.html" class="uri">https://scikit-learn.org/stable/unsupervised_learning.html</a></li>
+</ul>
+</section>
+<section id="general-model-types-and-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="general-model-types-and-assumptions">General model types and assumptions</h3>
+<ul>
+<li><strong>Parametric models</strong>
+<ul>
+<li>Parametric models are statistical models that make assumptions about the underlying distribution of the data being modeled. In parametric models, the relationship between the input variables and the output variable is represented by a fixed equation with a predefined number of parameters.</li>
+</ul></li>
+<li><strong>Nonparametric models</strong>
+<ul>
+<li>Nonparametric models are a type of statistical model that does not make any assumptions about the underlying distribution of the data being modeled. These models do not have a fixed number of parameters, and the complexity of the model increases as the amount of data increases. Nonparametric models are particularly useful when the underlying distribution of the data is unknown or when the data is very complex and nonlinear.</li>
+</ul></li>
+</ul>
+<hr>
+<ul>
+<li><strong>Linear models</strong>
+<ul>
+<li>As the name implies, linear models imply a linear relationship between input features and the dependent variable: <span class="math inline">\(y=mx+b\)</span>.</li>
+<li>Linear models can be extended to allow the dependent variable to follow a non-normal distribution through the use of a <em>link function</em>. Models of this type are called <em>generalized linear models</em> (GLMs); the Logistic Regression model is a common example.</li>
+</ul></li>
+<li><strong>Kernel-based models</strong>
+<ul>
+<li>Kernel-based models transform the input variables into a potentially non-linear high-dimensional space before applying multi-linear modeling methods to solve for the dependent variable. This allows the model to work on problems where simple linear models would not perform well.</li>
+<li>A common example is the Support Vector Machine (SVM).</li>
+</ul></li>
+<li><strong>Tree-based models</strong>
+<ul>
+<li>Tree-based models are based around the concept of a <em>decision tree</em>, which is a structure in which random variables are tested (a decision is made) and the next action to take depends on the result of that decision. Drawing such a model on paper results in a tree-like structure where each <em>interior node</em> is a decision and each <em>leaf node</em> is a label or regression result.</li>
+</ul></li>
+<li><strong>Neural Network models</strong>
+<ul>
+<li>Neural-network models rely on layers of artificial “neurons”, each of which is a linear model followed by a nonlinear <em>activation function</em>. Neural networks tend to contain large numbers of trainable parameters compared to other parametric models, and are capable of fitting very complex datasets with very complex outputs, but require intensive training to reach good performance.</li>
+<li>Neural networks are often characterized by the number of layers (more than one hidden layer ➡️ “deep learning”) and the way layers are connected (“fully connected”, “convolutional”, “recurrent”, “transformer”, etc.).</li>
+</ul></li>
+<li><strong>Clustering models</strong>
+<ul>
+<li>Clustering models are used primarily for <em>exploratory analysis</em>. They do not require a known labeling for the data, and work by establishing groupings within the samples based on some similarity measure.</li>
+<li>Common examples are k-Means, Hierarchical Clustering, DBSCAN, Mean Shift.</li>
+</ul></li>
+<li><strong>Ensemble models</strong>
+<ul>
+<li>Ensemble models models that use <em>collections</em> of simpler models internally, then reach a final output label or regression result by <em>consensus</em>. By utilizing many simple models, ensembles are often able to both reach higher peak performance and also lower variance than single models.</li>
+<li>Common examples are Random Forests, Boosting models (AdaBoost), and Gradient Boosted Tree models (XGBoost, LightGBM).</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="evaluation-metrics-how-do-you-know-when-your-model-is-doing-a-good-job" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation-metrics-how-do-you-know-when-your-model-is-doing-a-good-job">Evaluation Metrics : How do you know when your model is doing a good job?</h2>
+<section id="lets-see-some-code-first-we-will-import-the-python-packages-we-need-for-this-workshop" class="level4">
+<h4 class="anchored" data-anchor-id="lets-see-some-code-first-we-will-import-the-python-packages-we-need-for-this-workshop">Let’s see some code! First, we will import the python packages we need for this workshop:</h4>
+<div id="a6cf16ca" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.io <span class="im">import</span> arff</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> balanced_accuracy_score</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_error</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_percentage_error</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_score</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> PredictionErrorDisplay</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> recall_score</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.mixture <span class="im">import</span> GaussianMixture</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="now-we-need-to-set-up-some-datasets.-you-can-run-these-cells-and-essentially-ignore-the-code-there-for-now-come-back-to-it-later-after-youve-looked-at-the-discussion-of-the-different-metrics-below." class="level4">
+<h4 class="anchored" data-anchor-id="now-we-need-to-set-up-some-datasets.-you-can-run-these-cells-and-essentially-ignore-the-code-there-for-now-come-back-to-it-later-after-youve-looked-at-the-discussion-of-the-different-metrics-below.">Now, we need to set up some datasets. You can run these cells and essentially ignore the code there for now – come back to it later after you’ve looked at the discussion of the different metrics below.</h4>
+<div id="f256fc5e" class="cell" data-outputid="99b6768b-5ca0-4875-dd3f-8670283f66b2" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The classification dataset is "Dry Bean" from https://archive.ics.uci.edu/dataset/602/dry+bean+dataset</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the dataset (but only if it hasn't already been done).</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> [[ <span class="op">-</span>f dry<span class="op">+</span>bean<span class="op">+</span>dataset.<span class="bu">zip</span> ]] <span class="op">||</span> wget https:<span class="op">//</span>archive.ics.uci.edu<span class="op">/</span>static<span class="op">/</span>public<span class="op">/</span><span class="dv">602</span><span class="op">/</span>dry<span class="op">+</span>bean<span class="op">+</span>dataset.<span class="bu">zip</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> [[ <span class="op">-</span>d DryBeanDataset ]] <span class="op">||</span> unzip dry<span class="op">+</span>bean<span class="op">+</span>dataset.<span class="bu">zip</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> arff.loadarff(<span class="st">"DryBeanDataset/Dry_Bean_Dataset.arff"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>beans <span class="op">=</span> pd.DataFrame(data[<span class="dv">0</span>])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>beans[<span class="st">"Class"</span>] <span class="op">=</span> beans[<span class="st">"Class"</span>].<span class="bu">str</span>.decode(<span class="st">"utf-8"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># We will keep only three classes: "SIRA, CALI, and BOMBAY".</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>beans <span class="op">=</span> beans[beans[<span class="st">"Class"</span>].isin([<span class="st">"SIRA"</span>, <span class="st">"CALI"</span>, <span class="st">"BOMBAY"</span>])]</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Put the label column name and predictor column names in variables:</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>beans_label_col <span class="op">=</span> <span class="st">"Class"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose only two variables for this tutorial (and not the best ones, by far).</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>beans_var_cols <span class="op">=</span> [<span class="st">"Extent"</span>, <span class="st">"Eccentricity"</span>]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># We will also create a binary version (one with only two classes).</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>bin_beans <span class="op">=</span> beans.copy()</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>bin_beans.loc[bin_beans[<span class="st">"Class"</span>] <span class="op">!=</span> <span class="st">"SIRA"</span>, <span class="st">"Class"</span>] <span class="op">=</span> <span class="st">"NOT_SIRA"</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a simple 80/20 train/test split:</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>beans_train, beans_test <span class="op">=</span> train_test_split(</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    beans, test_size<span class="op">=</span><span class="fl">0.20</span>, stratify<span class="op">=</span>beans[<span class="st">"Class"</span>], random_state<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>bin_beans_train, bin_beans_test <span class="op">=</span> train_test_split(</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    bin_beans, test_size<span class="op">=</span><span class="fl">0.20</span>, stratify<span class="op">=</span>beans[<span class="st">"Class"</span>], random_state<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>beans_gt <span class="op">=</span> beans_test[beans_label_col].values</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>bin_beans_gt <span class="op">=</span> bin_beans_test[beans_label_col].values</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Print counts of each bean type:</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Counts by class in train set (multiclass):</span><span class="ch">\n</span><span class="sc">{</span>beans_train[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="ch">\n\n</span><span class="ss">Counts by class in test set (multiclass):</span><span class="ch">\n</span><span class="sc">{</span>beans_test[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="ch">\n\n</span><span class="ss">Counts by class in train set (binary):</span><span class="ch">\n</span><span class="sc">{</span>bin_beans_train[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="ch">\n\n</span><span class="ss">Counts by class in test set (binary):</span><span class="ch">\n</span><span class="sc">{</span>bin_beans_test[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple linear (logistic) regression classifier...</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>lm <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># ... And train it on the multiclass problem...</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>lm.fit(beans_train[beans_var_cols], beans_train[beans_label_col])</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>beans_preds <span class="op">=</span> lm.predict(beans_test[beans_var_cols])</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>beans_probas <span class="op">=</span> lm.predict_proba(beans_test[beans_var_cols])</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>mc_labels <span class="op">=</span> lm.classes_</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co"># ... And also on the binary classification problem.</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>lm.fit(bin_beans_train[beans_var_cols], bin_beans_train[beans_label_col])</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>bin_beans_preds <span class="op">=</span> lm.predict(bin_beans_test[beans_var_cols])</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>bin_beans_probas <span class="op">=</span> lm.predict_proba(bin_beans_test[beans_var_cols])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Counts by class in train set (multiclass):
+Class
+SIRA      2109
+CALI      1304
+BOMBAY     417
+Name: count, dtype: int64
+
+
+Counts by class in test set (multiclass):
+Class
+SIRA      527
+CALI      326
+BOMBAY    105
+Name: count, dtype: int64
+
+
+Counts by class in train set (binary):
+Class
+SIRA        2109
+NOT_SIRA    1721
+Name: count, dtype: int64
+
+
+Counts by class in test set (binary):
+Class
+SIRA        527
+NOT_SIRA    431
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<div id="640d93ef" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The regression dataset is "MPG" from https://archive.ics.uci.edu/dataset/9/auto+mpg</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the dataset (but only if it hasn't already been done).</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> [[ <span class="op">-</span>f auto<span class="op">+</span>mpg.<span class="bu">zip</span> ]] <span class="op">||</span> wget https:<span class="op">//</span>archive.ics.uci.edu<span class="op">/</span>static<span class="op">/</span>public<span class="op">/</span><span class="dv">9</span><span class="op">/</span>auto<span class="op">+</span>mpg.<span class="bu">zip</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> [[ <span class="op">-</span>f auto<span class="op">-</span>mpg.data ]] <span class="op">||</span> unzip auto<span class="op">+</span>mpg.<span class="bu">zip</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data.</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.read_csv(</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"auto-mpg.data"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    delim_whitespace<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    usecols<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>[<span class="st">"mpg"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"weight"</span>],</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    na_values<span class="op">=</span>[<span class="st">"?"</span>],</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> mpg.dropna(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>mpg_label_col <span class="op">=</span> <span class="st">"mpg"</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>mpg_var_cols <span class="op">=</span> [<span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"weight"</span>]</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># We should really standardize the predictors, but for now, we'll ignore that.</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a simple 80/20 train/test split:</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>mpg_train, mpg_test <span class="op">=</span> train_test_split(mpg, test_size<span class="op">=</span><span class="fl">0.20</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>mpg_gt <span class="op">=</span> mpg_test[mpg_label_col].values</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>rm <span class="op">=</span> LinearRegression()</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>rm.fit(mpg_train[mpg_var_cols], mpg_train[mpg_label_col])</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>mpg_preds <span class="op">=</span> rm.predict(mpg_test[mpg_var_cols])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/lc/rg61fs4569dcvt21xd0nffx40000gn/T/ipykernel_97808/881814137.py:7: FutureWarning: The 'delim_whitespace' keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep='\s+'`` instead
+  mpg = pd.read_csv(</code></pre>
+</div>
+</div>
+</section>
+<section id="classification-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="classification-metrics">Classification Metrics</h3>
+<p>A very good source of information about metrics for binary classifiers is available on Wikipedia:</p>
+<p><a href="https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers" class="uri">https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers</a></p>
+<section id="some-definitions" class="level4">
+<h4 class="anchored" data-anchor-id="some-definitions">Some definitions</h4>
+<ul>
+<li><strong>Condition Positive (P)</strong>
+<ul>
+<li>The number of real positive cases in the data</li>
+</ul></li>
+<li><strong>Condition Negative (N)</strong>
+<ul>
+<li>The number of real negative cases in the data</li>
+</ul></li>
+<li><strong>True Positive (TP)</strong>
+<ul>
+<li>A test result that correctly indicates the presence of a condition or characteristic</li>
+</ul></li>
+<li><strong>True Negative (TN)</strong>
+<ul>
+<li>A test result that correctly indicates the absence of a condition or characteristic</li>
+</ul></li>
+<li><strong>False Positive (FP)</strong>
+<ul>
+<li>A test result which wrongly indicates that a particular condition or attribute is present</li>
+</ul></li>
+<li><strong>False Negative (FN)</strong>
+<ul>
+<li>A test result which wrongly indicates that a particular condition or attribute is absent</li>
+</ul></li>
+</ul>
+</section>
+<section id="metrics-with-examples" class="level4">
+<h4 class="anchored" data-anchor-id="metrics-with-examples">Metrics with examples</h4>
+<ul>
+<li><strong>Recall (REC)</strong>
+<ul>
+<li><span class="math inline">\(\frac{\mathrm{TP}}{\mathrm{P}}\)</span> or <span class="math inline">\(\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FN}}\)</span></li>
+<li>In Scikit-Learn: <code>sklearn.metrics.recall_score()</code></li>
+</ul></li>
+</ul>
+<div id="f9457b0c" class="cell" data-outputid="fd65c028-d733-42da-a5a5-2be595f040de" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"REC (binary): </span><span class="sc">{</span>recall_score(bin_beans_gt, bin_beans_preds, pos_label<span class="op">=</span><span class="st">'SIRA'</span>)<span class="sc">:0.3f}</span><span class="ss">"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"REC (multiclass): </span><span class="sc">{</span>recall_score(beans_gt, beans_preds, average<span class="op">=</span><span class="st">'weighted'</span>)<span class="sc">:0.3f}</span><span class="ss">"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>REC (binary): 0.831
+REC (multiclass): 0.735</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Precision (PREC)</strong>
+<ul>
+<li><span class="math inline">\(\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FP}}\)</span></li>
+</ul></li>
+</ul>
+<div id="49c6c791" class="cell" data-outputid="a6c0a6db-ee09-4ff1-e18a-34f39556c8fc" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"PREC (binary): </span><span class="sc">{</span>precision_score(bin_beans_gt, bin_beans_preds, pos_label<span class="op">=</span><span class="st">'SIRA'</span>)<span class="sc">:0.3f}</span><span class="ss">"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"PREC (multiclass): </span><span class="sc">{</span>precision_score(beans_gt, beans_preds, average<span class="op">=</span><span class="st">'weighted'</span>)<span class="sc">:0.3f}</span><span class="ss">"</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>PREC (binary): 0.741
+PREC (multiclass): 0.657</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/jcausey/A-State Dropbox/Jason Causey/ASRI/ASRI_2024/.venv/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1517: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Accuracy (ACC)</strong>
+<ul>
+<li><span class="math inline">\(\frac{\mathrm{TP}+\mathrm{TN}}{\mathrm{P}+\mathrm{N}}\)</span> or <span class="math inline">\(\frac{\mathrm{TP}+\mathrm{TN}}{\mathrm{TP}+\mathrm{TN}+\mathrm{FP}+\mathrm{FN}}\)</span></li>
+</ul></li>
+</ul>
+<div id="e067206a" class="cell" data-outputid="51b05ff8-234b-4fab-e5d0-aaac21cbd8ba" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ACC (binary): </span><span class="sc">{</span>accuracy_score(bin_beans_gt, bin_beans_preds)<span class="sc">:0.3f}</span><span class="ss">"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ACC (multiclass): </span><span class="sc">{</span>accuracy_score(beans_gt, beans_preds)<span class="sc">:0.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ACC (binary): 0.747
+ACC (multiclass): 0.735</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Balanced Accuracy (BA)</strong>
+<ul>
+<li><span class="math inline">\(\frac{1}{2}(\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FN}} + \frac{\mathrm{TN}}{\mathrm{TN}+\mathrm{FP}})\)</span></li>
+<li>For multiclass, see <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#balanced-accuracy-score" class="uri">https://scikit-learn.org/stable/modules/model_evaluation.html#balanced-accuracy-score</a></li>
+</ul></li>
+</ul>
+<div id="711556d1" class="cell" data-outputid="e139d538-add0-48bf-a96f-7b6aab9a73f8" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"BA (binary): </span><span class="sc">{</span>balanced_accuracy_score(bin_beans_gt, bin_beans_preds)<span class="sc">:0.3f}</span><span class="ss">"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"BA (multiclass): </span><span class="sc">{</span>balanced_accuracy_score(beans_gt, beans_preds)<span class="sc">:0.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BA (binary): 0.738
+BA (multiclass): 0.535</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>F1 score (F1)</strong> is the harmonic mean of precision and recall.
+<ul>
+<li><span class="math inline">\(\frac{2 \mathrm{TP}}{2 \mathrm{TP}+\mathrm{FP}+\mathrm{FN}}\)</span></li>
+</ul></li>
+</ul>
+<div id="0faa8344" class="cell" data-outputid="84ff2cb4-6fd8-4e8b-f715-f30f49bf00be" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"F1 (binary): </span><span class="sc">{</span>f1_score(bin_beans_gt, bin_beans_preds, pos_label<span class="op">=</span><span class="st">'SIRA'</span>)<span class="sc">:0.3f}</span><span class="ss">"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"F1 (multiclass): </span><span class="sc">{</span>f1_score(beans_gt, beans_preds, average<span class="op">=</span><span class="st">'weighted'</span>)<span class="sc">:0.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>F1 (binary): 0.784
+F1 (multiclass): 0.690</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>ROC curve</strong> and <strong>Area Under the ROC Curve (AUROC)</strong>
+<ul>
+<li><a href="https://glassboxmedicine.com/2019/02/23/measuring-performance-auc-auroc/" class="uri">https://glassboxmedicine.com/2019/02/23/measuring-performance-auc-auroc/</a><br><img src="https://glassboxmedicine.files.wordpress.com/2019/02/roc-curve-v2.png" class="img-fluid" alt="https://glassboxmedicine.com/2019/02/23/measuring-performance-auc-auroc/"></li>
+<li>Integrating the area under the ROC curve gives you the numeric metric <em>AUROC</em>. It is in the range <span class="math inline">\([0,1]\)</span>, and higher is better.</li>
+</ul></li>
+</ul>
+<div id="2ca5733e" class="cell" data-outputid="ff0b31d7-087d-4efa-b55f-69f67b8626db" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Area under the ROC Curve:</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>auroc_bin <span class="op">=</span> roc_auc_score(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    bin_beans_gt, bin_beans_probas[:, <span class="dv">1</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>)  <span class="co"># 'SIRA' is in column index 1</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>auroc_mc <span class="op">=</span> roc_auc_score(beans_gt, beans_probas, multi_class<span class="op">=</span><span class="st">"ovr"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"AUROC (binary): </span><span class="sc">{</span>auroc_bin<span class="sc">:0.3f}</span><span class="ss">"</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"AUROC (multiclass): </span><span class="sc">{</span>auroc_mc<span class="sc">:0.3f}</span><span class="ss">"</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># A function to plot the ROC curve:</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_roc_curve(y_true, y_pred_proba, auc, desc<span class="op">=</span><span class="st">""</span>):</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    fpr, tpr, _ <span class="op">=</span> roc_curve(y_true, y_pred_proba, pos_label<span class="op">=</span><span class="st">"SIRA"</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    plt.plot(fpr, tpr, label<span class="op">=</span><span class="ss">f"AUC=</span><span class="sc">{</span>auc<span class="sc">:0.3f}</span><span class="ss">"</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f"ROC </span><span class="sc">{</span>desc<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"False Positive Rate"</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"True Positive Rate"</span>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    plt.legend(loc<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>plot_roc_curve(bin_beans_gt, bin_beans_probas[:, <span class="dv">1</span>], auroc_bin, <span class="st">"(binary)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>AUROC (binary): 0.806
+AUROC (multiclass): 0.786</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="python_beginner_choosing_a_model_complete_ASRI24_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Confusion Matrix</strong>
+<ul>
+<li>Visual grid showing the correct labeling (rows) versus the predicted labeling (columns), with the number in each cell representing the number of samples predicted for each (ground_truth / prediction) combination.</li>
+<li>The major diagonal shows <em>correct</em> labelings, all others show <em>incorrect</em> labelings.</li>
+<li>Most often used in multi-class evaluations.</li>
+</ul></li>
+</ul>
+<div id="3b8f671c" class="cell" data-outputid="2315ef86-d974-4ce0-dfca-c17101f4d13a" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confusion matrix for the multiclass predictions:</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cf_mat <span class="op">=</span> confusion_matrix(beans_gt, beans_preds)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the confusion matrix using seaborn heatmap</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(font_scale<span class="op">=</span><span class="fl">1.4</span>)  <span class="co"># adjust font size</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>sns.heatmap(</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    cf_mat,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    annot<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    fmt<span class="op">=</span><span class="st">"g"</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"Blues"</span>,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    xticklabels<span class="op">=</span>mc_labels,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    yticklabels<span class="op">=</span>mc_labels,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># add axis labels and title</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Predicted label"</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"True label"</span>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Confusion Matrix"</span>)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="co"># show the plot</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="python_beginner_choosing_a_model_complete_ASRI24_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="regression-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="regression-metrics">Regression Metrics</h3>
+<p>See <a href="https://en.wikipedia.org/wiki/Regression_validation" class="uri">https://en.wikipedia.org/wiki/Regression_validation</a> for a good discussion of regression validation metrics. We will look at a few of the most common here, focusing mostly on what is available in Scikit-Learn (See <a href="https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics" class="uri">https://scikit-learn.org/stable/modules/model_evaluation.html#regression-metrics</a>).</p>
+<ul>
+<li><strong><span class="math inline">\(R^2\)</span> score, the coefficient of determination</strong>
+<ul>
+<li><span class="math inline">\(R^2(y, \hat{y})=1-\frac{\sum_{i=1}^n\left(y_i-\hat{y}_i\right)^2}{\sum_{i=1}^n\left(y_i-\bar{y}\right)^2}\)</span></li>
+<li>It represents the proportion of variance (of y) that has been explained by the independent variables in the model. It provides an indication of goodness of fit and therefore a measure of how well unseen samples are likely to be predicted by the model, through the proportion of explained variance.</li>
+<li><strong>It doesn’t directly measure the performance of the model</strong> as other metrics do. You may want to use it in conjunction with another metric when measuring predictive performance.</li>
+</ul></li>
+</ul>
+<div id="76c1352f" class="cell" data-outputid="f1e6473d-adfb-4918-cf76-34a1bde7cf59" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R^2: </span><span class="sc">{</span>r2_score(mpg_gt, mpg_preds) <span class="sc">:0.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2: 0.718</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Mean Squared Error (MSE)</strong>
+<ul>
+<li><span class="math inline">\(\operatorname{MSE}(y, \hat{y})=\frac{1}{n_{\text {samples }}} \sum_{i=0}^{n_{\text {samples }}-1}\left(y_i-\hat{y}_i\right)^2\)</span></li>
+<li>MSE is probably the most common regression metric.</li>
+</ul></li>
+</ul>
+<div id="5564215b" class="cell" data-outputid="c816ac89-5288-4ae5-bc14-cf3b52c33204" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"MSE: </span><span class="sc">{</span>mean_squared_error(mpg_gt, mpg_preds) <span class="sc">:0.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MSE: 19.535</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Mean Absolute Error (MAE)</strong>
+<ul>
+<li><span class="math inline">\(\operatorname{MAE}(y, \hat{y})=\frac{1}{n_{\text {samples }}} \sum_{i=0}^{n_{\text {samples }}-1}\left|y_i-\hat{y}_i\right|\)</span>.</li>
+<li>MAE has the advantage that it is in the same <em>units</em> as the dependent variable, so it is easy to interpret.</li>
+</ul></li>
+</ul>
+<div id="17a723d4" class="cell" data-outputid="ebf37c1e-a07f-45b9-bb4f-7a439aae8128" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"MAE: </span><span class="sc">{</span>mean_absolute_error(mpg_gt, mpg_preds) <span class="sc">:0.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAE: 3.254</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Mean Absolute Percentage Error (MAPE)</strong>
+<ul>
+<li><span class="math inline">\(\operatorname{MAPE}(y, \hat{y})=\frac{1}{n_{\text {samples }}} \sum_{i=0}^{n_{\text {samples }}-1} \frac{\left|y_i-\hat{y}_i\right|}{\max \left(\epsilon,\left|y_i\right|\right)}\)</span></li>
+<li>A percentage is considered “more interpretable” in some circumstances.</li>
+</ul></li>
+</ul>
+<div id="efd79e89" class="cell" data-outputid="1d8f1a9f-dbc1-4b09-8346-e7092cd44c4a" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>mape_raw <span class="op">=</span> mean_absolute_percentage_error(mpg_gt, mpg_preds)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"MAPE </span><span class="sc">{</span>mape_raw <span class="op">*</span> <span class="dv">100</span> <span class="sc">:0.1f}</span><span class="ss">% (</span><span class="sc">{</span>mape_raw<span class="sc">:0.3f}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAPE 13.6% (0.136)</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Visual evaluation of regression models</strong>
+<ul>
+<li>Plotting the residuals is a good visual tool for understanding how well your model is behaving.</li>
+<li>We can use the <code>PredictionErrorDisplay</code> object from Scikit-Learn to do this easily:</li>
+</ul></li>
+</ul>
+<div id="0faa7d33" class="cell" data-outputid="1ba840c7-bde5-48b6-9089-308de97ea57d" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>display <span class="op">=</span> PredictionErrorDisplay(y_true<span class="op">=</span>mpg_gt, y_pred<span class="op">=</span>mpg_preds)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>display.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="python_beginner_choosing_a_model_complete_ASRI24_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ideally, you want to see the residuals randomly distributed around the 0 line. If you see a <em>pattern</em> in the residuals, that is an indication that your model isn’t doing a very good job. In our case, <strong>these residuals do not look good</strong> – we may have non-linear behavior, but we are using a simple linear model to make predictions.</p>
+<p>To solve this, we should probably consider transforming the predictors, the dependent variable, or both. Or, we might want to choose a more complex model than a linear regression model.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

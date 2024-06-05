@@ -1,0 +1,47 @@
+::: {#github}
+[![](images/github-mark.svg)](https://github.com/jcausey-astate/ASRI-2024){target="_blank" title="View on GitHub"}
+:::
+
+# Notebooks for ASRI-2024 Summer Workshops
+
+## June 06: Classification in Python (Intermediate)
+
+::: {.indented}
+
+#### Workshop version (with open exercises to complete)
+
+<https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_intermediate_classification_ASRI24.ipynb>
+
+#### Completed version for reference
+
+<https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_intermediate_classification_complete_ASRI24.ipynb>
+
+:::
+
+## June 11: Classification in Python (Intermediate)
+
+::: {.indented}
+
+#### Workshop version (with open exercises to complete)
+
+<https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_intermediate_clustering_ASRI24.ipynb>
+
+#### Completed version for reference
+
+<https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_intermediate_clustering_complete_ASRI24.ipynb>
+
+:::
+
+## June 12: Choosing and Evaluating Machine Learning Models in Python (Beginner)
+
+::: {.indented}
+
+#### Workshop version (with open exercises to complete)
+
+<https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_beginner_choosing_a_model_ASRI24.ipynb>
+
+#### Completed version for reference
+
+<https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_beginner_choosing_a_model_complete_ASRI24.ipynb>
+
+:::

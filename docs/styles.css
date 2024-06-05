@@ -1,0 +1,29 @@
+/* css styles */
+
+h1 {
+    font-weight: 900;
+    font-size: 2.25em;
+}
+
+h2 {
+    border-bottom: none;
+    padding-bottom: 0rem;
+    margin-bottom: 0rem;
+}
+
+.indented {
+    margin-left: 1rem;
+}
+
+.indented section {
+    border-left: .25rem solid rgba(142, 25, 1, 0.329);
+    padding-left: .4rem;
+}
+
+#github {
+    height: 1.75em;
+    width: 1.75em;
+    position: fixed;
+    right: 0.2rem;
+    top: 0.2rem;
+}
