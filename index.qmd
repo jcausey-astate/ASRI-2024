@@ -18,6 +18,7 @@
 
 :::
 
+<!--
 ## June 11: Classification in Python (Intermediate)
 
 ::: {.indented}
@@ -44,4 +45,4 @@
 
 <https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_beginner_choosing_a_model_complete_ASRI24.ipynb>
 
-:::
+::: -->
