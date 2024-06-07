@@ -1,8 +1,16 @@
 /* css styles */
 
 h1 {
+    #footer {
+        font-size: 8pt;
+        position: absolute;
+        right: 0.
+    }
     font-weight: 900;
     font-size: 2.25em;
+}
+h1 a {
+    text-decoration: none;
 }
 
 h2 {
@@ -20,10 +28,24 @@ h2 {
     padding-left: .4rem;
 }
 
-#github {
+#glyphs {
     height: 1.75em;
-    width: 1.75em;
+    width: auto;
     position: fixed;
     right: 0.2rem;
     top: 0.2rem;
+}
+#glyphs img {
+    height: 1.75em;
+    width: 1.75em;
+}
+
+#footer {
+    font-size: 0.555em;
+    position: fixed;
+    right: 0.2rem;
+    bottom: 0.2rem;
+}
+#footer a{
+    text-decoration: none;
 }

@@ -1,8 +1,9 @@
-::: {#github}
+::: {#glyphs}
+[![](images/Orcid%20logo.svg)](https://orcid.org/0000-0002-3985-2919){target="_blank" title="ORCiD"}
 [![](images/github-mark.svg)](https://github.com/jcausey-astate/ASRI-2024){target="_blank" title="View on GitHub"}
 :::
 
-# Notebooks for ASRI-2024 Summer Workshops
+# Notebooks for [ASRI-2024](https://dartproject.org/2024-asri/) Summer Workshops
 
 ## June 06: Classification in Python (Intermediate)
 
@@ -46,3 +47,7 @@
 <https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_beginner_choosing_a_model_complete_ASRI24.ipynb>
 
 ::: -->
+
+:::{#footer}
+2024 [Jason L. Causey](https://jasoncausey.net/cv/){target=_blank},  [Department of Computer Science, Arkansas State University](https://www.astate.edu/college/ecs/computer-science/){target=_blank}. [ORCiD: 0000-0002-3985-2919](https://orcid.org/0000-0002-3985-2919){target=_blank}
+:::

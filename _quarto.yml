@@ -6,6 +6,7 @@ project:
     - "*_complete_*.ipynb"
     - "!*.zip"
     - "!*.data"
+    - "!datasets/"
     - "!*.names"
     - "!DryBeanDataset/"
     - "!z_recordings/"

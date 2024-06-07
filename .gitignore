@@ -9,6 +9,7 @@
 **/*.zip
 **/*.data
 **/*.names
+datasets
 DryBeanDataset
 z_recordings
 
