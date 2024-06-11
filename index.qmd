@@ -19,7 +19,6 @@
 
 :::
 
-<!--
 ## June 11: Classification in Python (Intermediate)
 
 ::: {.indented}
@@ -33,6 +32,8 @@
 <https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_intermediate_clustering_complete_ASRI24.ipynb>
 
 :::
+
+<!--
 
 ## June 12: Choosing and Evaluating Machine Learning Models in Python (Beginner)
 

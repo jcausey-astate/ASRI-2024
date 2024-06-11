@@ -209,7 +209,7 @@ window.Quarto = {
 <section id="lets-see-some-code" class="level2">
 <h2 class="anchored" data-anchor-id="lets-see-some-code">Let’s see some code</h2>
 <p>First, we have to import the modules, objects, and functions we will be using in this tutorial:</p>
-<div id="d118e03b" class="cell" data-execution_count="1">
+<div id="fd549fb3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -220,11 +220,12 @@ window.Quarto = {
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> AgglomerativeClustering</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> MeanShift</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> HDBSCAN</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> MeanShift</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="comparing-clustering-techniques" class="level2">
@@ -239,7 +240,7 @@ window.Quarto = {
 <li><strong>Density Blobs</strong> : This simulated dataset will consist of three “blobs” with widely varying density and size characteristics. The blobs overlap so that they are not perfectly visually separable.</li>
 </ul>
 <p>The following code block creates the simulated datasets and loads the Palmer Penguins dataset and selects the two predictors we will use for this tutorial.</p>
-<div id="cb956c4c" class="cell" data-execution_count="2">
+<div id="741104d1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n_samples <span class="op">=</span> <span class="dv">500</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># penguins : this is a real dataset, so we will load it and select a useful set of</span></span>
@@ -274,7 +275,7 @@ window.Quarto = {
 </div>
 <p>💡 To make understanding the data easier, we need a way to visualize the datasets, plus give hints about what the “expected” labeling would be as well as what a clustering technique assigns as labels.</p>
 <p>We will create a function that can take a list of datasets with corresponding names, labels, and styles. The function will use the Seaborn <code>scatterplot()</code> function to plot the datasets in a grid.</p>
-<div id="9c8ba9b2" class="cell" data-execution_count="3">
+<div id="49bfb694" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_all(data_list, names<span class="op">=</span><span class="va">None</span>, label_list<span class="op">=</span><span class="va">None</span>, style_list<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Plot scatterplots for all the 2-D datasets in `data_list`.</span></span>
@@ -302,7 +303,7 @@ window.Quarto = {
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, let’s use the <code>plot_all()</code> function to plot our four datasets. We will use the “real” labels to color the points so that you can see what the “ideal” labeling would be.</p>
-<div id="68433e62" class="cell" data-outputid="fd7b8094-045d-41c0-9330-ea72ef2567a4" data-execution_count="4">
+<div id="3834e2e2" class="cell" data-outputid="fd7b8094-045d-41c0-9330-ea72ef2567a4" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot_all(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    [penguins, moons, circles, density_blobs],</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Penguins"</span>, <span class="st">"Moons"</span>, <span class="st">"Circles"</span>, <span class="st">"Density Blobs"</span>],</span>
@@ -323,7 +324,7 @@ window.Quarto = {
 <p>Let’s start with <strong><em>k-Means</em></strong> clustering. <strong>k-Means is probably the most well-known clustering technique because it is simple</strong>, intuitive to understand, and it works well for clustering lots of datasets where we can visually identify “groups” in a scatterplot.</p>
 <p>k-Means works by first choosing a value <span class="math inline">\(k\)</span> that represents <em>the desired number of clusters</em>. You need to already know something about the dataset to correctly choose <span class="math inline">\(k\)</span> (for example, you may visualize it first and choose the number that seem right from looking at the scatterplot). There are also some techniques for choosing <span class="math inline">\(k\)</span> if you have no idea of what to try. (See: <a href="https://medium.com/analytics-vidhya/how-to-determine-the-optimal-k-for-k-means-708505d204eb" class="uri">https://medium.com/analytics-vidhya/how-to-determine-the-optimal-k-for-k-means-708505d204eb</a>)</p>
 <p>Let’s see how k-Means would label each of our test datasets. We “know” from looking at the scatterplots that there are three groups in the “penguins” and “density blobs” datasets, and there are two groups in the “moons” and “circles” datasets. So, we will choose <span class="math inline">\(k\)</span> for each dataset to match our expectation.</p>
-<div id="6f51e7c6" class="cell" data-outputid="954505f3-e69c-4422-89b6-958fe76e1544" data-execution_count="5">
+<div id="a758eb7d" class="cell" data-outputid="954505f3-e69c-4422-89b6-958fe76e1544" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>kmeans_2 <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">1</span>)  <span class="co"># k-Means with 2 clusters</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>kmeans_3 <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>, random_state<span class="op">=</span><span class="dv">1</span>)  <span class="co"># k-Means with 3 clusters</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -360,7 +361,7 @@ window.Quarto = {
 </div>
 <p>🤔 We can see that k-Means does a reasonable job of finding the three groups in the “penguins” dataset. One of those groups (the Chinstrap penguins) is difficult to separate even with more complicated methods. The method does a good job of separating the two “easier” groups (Adelie and Gentoo).</p>
 <p>❓ <strong><em>What if we chose <span class="math inline">\(k\)</span> incorrectly?</em></strong> Let’s see by first assuming <span class="math inline">\(k=2\)</span> for all four datasets:</p>
-<div id="f0b2da82" class="cell" data-outputid="52d6b1c9-2099-4251-ca6a-38fb482eed79" data-execution_count="6">
+<div id="b9137ee1" class="cell" data-outputid="52d6b1c9-2099-4251-ca6a-38fb482eed79" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What if we believe there are 2 clusters in each of the datasets?</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>kmeans_2 <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">1</span>)  <span class="co"># k-Means with 2 clusters</span></span>
@@ -396,7 +397,7 @@ window.Quarto = {
 </div>
 <p>❓ What do you think about these clusters?</p>
 <p>Now, let’s incorrectly assume <span class="math inline">\(k=4\)</span> for all four datasets:</p>
-<div id="b372ca62" class="cell" data-outputid="fad232c3-20ef-471f-a2c6-1336b539ad77" data-execution_count="7">
+<div id="2d6bc02d" class="cell" data-outputid="fad232c3-20ef-471f-a2c6-1336b539ad77" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What if we believe there are 4 clusters in all of the datasets?</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>kmeans_4 <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">1</span>)  <span class="co"># k-Means with 4 clusters</span></span>
@@ -432,7 +433,7 @@ window.Quarto = {
 </div>
 <p>ℹ️ With k-Means, the clustering is <em>stochastic</em>, meaning that it will be different each time you run it (unless you set the <code>random_state</code> to make it reproducible).</p>
 <p><strong>Let’s see that in action:</strong></p>
-<div id="944173db" class="cell" data-outputid="d3ad0fee-a879-4eba-94b3-a7d2edfbe769" data-execution_count="8">
+<div id="94ddc9a3" class="cell" data-outputid="d3ad0fee-a879-4eba-94b3-a7d2edfbe769" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What if we believe there are 4 clusters in all of the datasets?</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>kmeans_4 <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>)  <span class="co"># k-Means with 4 clusters, no fixed random state.</span></span>
@@ -474,7 +475,7 @@ window.Quarto = {
 <section id="mean-shift-clustering" class="level3">
 <h3 class="anchored" data-anchor-id="mean-shift-clustering">Mean-Shift Clustering</h3>
 <p>Mean-Shift clustering provides a powerful technique for clustering a dataset when we <em>don’t already know the number of clusters</em>.</p>
-<div id="8cd00eb4" class="cell" data-outputid="1a8e50f8-b32e-4983-89da-61fbc181512b" data-execution_count="9">
+<div id="c25284f9" class="cell" data-outputid="1a8e50f8-b32e-4983-89da-61fbc181512b" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For each dataset, we need to estimate the bandwidth parameter, then create the</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># MeanShift object.  To automate this, we will wrap the two steps up into a function.</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_MeanShift(X, quantile<span class="op">=</span><span class="fl">0.25</span>):</span>
@@ -516,7 +517,7 @@ window.Quarto = {
 <section id="dbscan" class="level3">
 <h3 class="anchored" data-anchor-id="dbscan">DBSCAN</h3>
 <p>The DBSCAN technique looks for regions of <em>similar density</em>, and assumes that those regions represent groups of samples. It is also capable of automatically identifying <em>outliers</em> (or “noise points”) that may not belong to any group.</p>
-<div id="5e266bf9" class="cell" data-outputid="ad8f7932-c76d-483a-b330-12d0706a965b" data-execution_count="10">
+<div id="3828fb28" class="cell" data-outputid="ad8f7932-c76d-483a-b330-12d0706a965b" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Like MeanShift, there is an important tuning parameter ('eps') for DBSCAN.</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use DBSCAN to cluster each dataset:</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>penguins_DBSCAN <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="fl">0.25</span>).fit_predict(penguins)</span>
@@ -547,33 +548,31 @@ window.Quarto = {
 <p>🤔 We can see that DBSCAN did a very good job on the “strange” datasets (moons and circles). It also did a decent job with the Penguins dataset. The performance on the density blobs data is interesting: It identified the small dense cluster, but found spurious extra clusters as well. It also failed to see the two larger clusters as separate objects.</p>
 <p>ℹ️ DBSCAN requires careful tuning of the <code>eps</code> parameter, which is related to the expected density of clusters. When there is a wide variation in the density of “real” clusters, DBSCAN can fail to perform well (as it did here). However, if there is a sparse background of noisy points with some clusters of similar density, DBSCAN will find those clusters even if they are not “blob-shaped”.</p>
 </section>
-<section id="agglomerative-hierarchical-clustering" class="level3">
-<h3 class="anchored" data-anchor-id="agglomerative-hierarchical-clustering">Agglomerative Hierarchical Clustering</h3>
-<div id="48fdfd8b" class="cell" data-outputid="29fa70a7-a14f-459b-ff4e-fd9decb6c8fe" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use agglomerative clustering to cluster each dataset:</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>penguins_ag <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">3</span>, linkage<span class="op">=</span><span class="st">"ward"</span>).fit_predict(</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    penguins</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>moons_ag <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">2</span>, linkage<span class="op">=</span><span class="st">"single"</span>).fit_predict(moons)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>circles_ag <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">2</span>, linkage<span class="op">=</span><span class="st">"single"</span>).fit_predict(</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    circles</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>density_blobs_ag <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">3</span>, linkage<span class="op">=</span><span class="st">"ward"</span>).fit_predict(</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    density_blobs</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Now plot them:</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>plot_all(</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    [penguins, moons, circles, density_blobs],</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Hierarchical Penguins"</span>,</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Hierarchical Moons"</span>,</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Hierarchical Circles"</span>,</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Hierarchical Density Blobs"</span>,</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    [penguins_ag, moons_ag, circles_ag, density_blobs_ag],</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    [penguins_labels, moons_labels, circles_labels, density_blobs_labels],</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="hdbscan" class="level3">
+<h3 class="anchored" data-anchor-id="hdbscan">HDBSCAN</h3>
+<p>The HDBSCAN technique performs DBSCAN over varying epsilon (<code>eps</code>) values and integrates the result to find a clustering that gives the best stability over epsilon. This allows HDBSCAN to find clusters of varying densities (unlike DBSCAN), and be more robust to parameter selection.</p>
+<div id="6e79f6b8" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HDBSCAN isn't as sensitive to tuning parameters as DBSCAN, although tuning the </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># `min_cluster_size` can be helpful if you have an idea of how many values should</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># be contained in even the smallest cluster.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use HDBSCAN to cluster each dataset:</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>penguins_HDBSCAN <span class="op">=</span> HDBSCAN().fit_predict(penguins)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>moons_HDBSCAN <span class="op">=</span> HDBSCAN().fit_predict(moons)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>circles_HDBSCAN <span class="op">=</span> HDBSCAN().fit_predict(circles)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>density_blobs_HDBSCAN <span class="op">=</span> HDBSCAN().fit_predict(density_blobs)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Now plot them:</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plot_all(</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    [penguins, moons, circles, density_blobs],</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"HDBSCAN Penguins"</span>,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"HDBSCAN Moons"</span>,</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"HDBSCAN Circles"</span>,</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"HDBSCAN Density Blobs"</span>,</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    [penguins_HDBSCAN, moons_HDBSCAN, circles_HDBSCAN, density_blobs_HDBSCAN],</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    [penguins_labels, moons_labels, circles_labels, density_blobs_labels],</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -582,22 +581,59 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>🤔 The hierarchical clustering technique did a pretty good job on all the datasets, but we had to do some tuning. Specifically, the choice of <code>linkage</code> can make a big difference, as can the choice of <code>metric</code> (which we did not tune here). We also provided the model with our desired number of clusters. Agglomerative Clustering will work <em>without</em> the number of clusters provided, but it might not produce the desired result. If you know the expected number of clusters, it is very helpful to provide it.</p>
-<p>ℹ️ <strong>Another</strong> thing you can do with hierarchical clustering is to visualize the relationships between the samples as a <strong><em>dendrogram</em></strong>. A dendrogram is a tree-like representation that shows every possible clustering from a single group to <span class="math inline">\(N\)</span> groups (where <span class="math inline">\(N\)</span> is the total number of samples). The height of the vertical lines represent changes in similarity between splits.</p>
-<p>You can use this visualization to get an idea of how many clusters <em>should</em> exist in the dataset. <strong>This can be used to determine <span class="math inline">\(k\)</span> before performing k-Means clustering, or for other models that require knowing the number of groups beforehand.</strong></p>
-<p>💁 The dendrogram visualization is available from SciPy. (See: <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.dendrogram.html#scipy.cluster.hierarchy.dendrogram" class="uri">https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.dendrogram.html#scipy.cluster.hierarchy.dendrogram</a>)</p>
-<p>To see it in action, we will generate dendrogram for the “density blobs” dataset:</p>
-<div id="6bfa9024" class="cell" data-outputid="c6544887-c989-435a-a1f3-c416bd12414a" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>linkage_matrix <span class="op">=</span> linkage(density_blobs, <span class="st">"ward"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">9</span>))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Hierarchical Density Blobs Dendrogram"</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"distance (Ward)"</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>dendrogram(linkage_matrix, no_labels<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>🤔 HDBSCAN with defaults for all parameters did a pretty good job. It was really good at the circles and moons, but introduced some spurious extra clusters in penguins and density blobs.</p>
+</section>
+<section id="agglomerative-hierarchical-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="agglomerative-hierarchical-clustering">Agglomerative Hierarchical Clustering</h3>
+<div id="502dcd36" class="cell" data-outputid="29fa70a7-a14f-459b-ff4e-fd9decb6c8fe" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use agglomerative clustering to cluster each dataset:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>penguins_ag <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">3</span>, linkage<span class="op">=</span><span class="st">"ward"</span>).fit_predict(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    penguins</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>moons_ag <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">2</span>, linkage<span class="op">=</span><span class="st">"single"</span>).fit_predict(moons)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>circles_ag <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">2</span>, linkage<span class="op">=</span><span class="st">"single"</span>).fit_predict(</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    circles</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>density_blobs_ag <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">3</span>, linkage<span class="op">=</span><span class="st">"ward"</span>).fit_predict(</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    density_blobs</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Now plot them:</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plot_all(</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    [penguins, moons, circles, density_blobs],</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Hierarchical Penguins"</span>,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Hierarchical Moons"</span>,</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Hierarchical Circles"</span>,</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Hierarchical Density Blobs"</span>,</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    [penguins_ag, moons_ag, circles_ag, density_blobs_ag],</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    [penguins_labels, moons_labels, circles_labels, density_blobs_labels],</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="python_intermediate_clustering_complete_ASRI24_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>🤔 The hierarchical clustering technique did a pretty good job on all the datasets, but we had to do some tuning. Specifically, the choice of <code>linkage</code> can make a big difference, as can the choice of <code>metric</code> (which we did not tune here). We also provided the model with our desired number of clusters. Agglomerative Clustering will work <em>without</em> the number of clusters provided, but it might not produce the desired result. If you know the expected number of clusters, it is very helpful to provide it.</p>
+<p>ℹ️ <strong>Another</strong> thing you can do with hierarchical clustering is to visualize the relationships between the samples as a <strong><em>dendrogram</em></strong>. A dendrogram is a tree-like representation that shows every possible clustering from a single group to <span class="math inline">\(N\)</span> groups (where <span class="math inline">\(N\)</span> is the total number of samples). The height of the vertical lines represent changes in similarity between splits.</p>
+<p>You can use this visualization to get an idea of how many clusters <em>should</em> exist in the dataset. <strong>This can be used to determine <span class="math inline">\(k\)</span> before performing k-Means clustering, or for other models that require knowing the number of groups beforehand.</strong></p>
+<p>💁 The dendrogram visualization is available from SciPy. (See: <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.dendrogram.html#scipy.cluster.hierarchy.dendrogram" class="uri">https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.dendrogram.html#scipy.cluster.hierarchy.dendrogram</a>)</p>
+<p>To see it in action, we will generate dendrogram for the “penguins” dataset:</p>
+<div id="3eec346e" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>linkage_matrix <span class="op">=</span> linkage(penguins, <span class="st">"ward"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">9</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Hierarchical Penguins Dendrogram"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"distance (Ward)"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>dendrogram(linkage_matrix, no_labels<span class="op">=</span><span class="va">True</span>, color_threshold<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="python_intermediate_clustering_complete_ASRI24_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -607,33 +643,33 @@ window.Quarto = {
 <section id="gaussian-mixture-model" class="level3">
 <h3 class="anchored" data-anchor-id="gaussian-mixture-model">Gaussian Mixture Model</h3>
 <p>The Gaussian Mixture Model (GMM) works by assuming that clusters are multi-dimensional Gaussian distributions (which look like roughly “circular” blobs that are denser in the middle). It is quite flexible if you have “blob-like” clusters, and GMM-like clusters occur frequently in natural datasets.</p>
-<div id="b42ae769" class="cell" data-outputid="73cc597d-e60c-4a13-8014-ee596c582485" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.mixture <span class="im">import</span> GaussianMixture</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a GMM to cluster each dataset.  We assume that penguins and</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># density blobs have three clusters, and that moons and circles have two.</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>penguins_ag <span class="op">=</span> GaussianMixture(n_components<span class="op">=</span><span class="dv">3</span>).fit_predict(penguins)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>moons_ag <span class="op">=</span> GaussianMixture(n_components<span class="op">=</span><span class="dv">2</span>).fit_predict(moons)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>circles_ag <span class="op">=</span> GaussianMixture(n_components<span class="op">=</span><span class="dv">2</span>).fit_predict(circles)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>density_blobs_ag <span class="op">=</span> GaussianMixture(n_components<span class="op">=</span><span class="dv">3</span>).fit_predict(density_blobs)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Now plot them:</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>plot_all(</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    [penguins, moons, circles, density_blobs],</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GMM Penguins"</span>,</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GMM Moons"</span>,</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GMM Circles"</span>,</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GMM Density Blobs"</span>,</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    [penguins_ag, moons_ag, circles_ag, density_blobs_ag],</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    [penguins_labels, moons_labels, circles_labels, density_blobs_labels],</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="69c5cdfc" class="cell" data-outputid="73cc597d-e60c-4a13-8014-ee596c582485" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.mixture <span class="im">import</span> GaussianMixture</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a GMM to cluster each dataset.  We assume that penguins and</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># density blobs have three clusters, and that moons and circles have two.</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>penguins_ag <span class="op">=</span> GaussianMixture(n_components<span class="op">=</span><span class="dv">3</span>).fit_predict(penguins)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>moons_ag <span class="op">=</span> GaussianMixture(n_components<span class="op">=</span><span class="dv">2</span>).fit_predict(moons)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>circles_ag <span class="op">=</span> GaussianMixture(n_components<span class="op">=</span><span class="dv">2</span>).fit_predict(circles)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>density_blobs_ag <span class="op">=</span> GaussianMixture(n_components<span class="op">=</span><span class="dv">3</span>).fit_predict(density_blobs)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Now plot them:</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plot_all(</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    [penguins, moons, circles, density_blobs],</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    [</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GMM Penguins"</span>,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GMM Moons"</span>,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GMM Circles"</span>,</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GMM Density Blobs"</span>,</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    [penguins_ag, moons_ag, circles_ag, density_blobs_ag],</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    [penguins_labels, moons_labels, circles_labels, density_blobs_labels],</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="python_intermediate_clustering_complete_ASRI24_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="python_intermediate_clustering_complete_ASRI24_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
