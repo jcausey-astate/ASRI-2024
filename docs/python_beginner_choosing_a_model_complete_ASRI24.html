@@ -164,7 +164,7 @@ window.Quarto = {
 </ul>
 <p>We will rely heavily on the Scikit-Learn library for models, metrics, and experimental design tools. See the full documentation for this fantastic library at <a href="https://scikit-learn.org" class="uri">https://scikit-learn.org</a>.</p>
 <hr>
-<p>In this workshop, we will focus on the big picture questions of model selection and evaluation:</p>
+<p><strong>In this workshop, we will focus on the big picture questions of model <em>selection</em> and <em>evaluation</em>:</strong></p>
 <ul>
 <li><strong>Model Selection :</strong> How to you begin to choose a model?
 <ul>
@@ -191,7 +191,7 @@ window.Quarto = {
 <p><strong><em>Regression</em></strong> models try to compute a <em>continuous</em> output value (dependent variable) for a given <em>sample</em>.</p>
 <ul>
 <li><strong><em>Continuous</em></strong> values are numeric values that are allowed to take on any value within some range.</li>
-<li>A <strong><em>sample</em></strong> consists of all of the experimental information gathered for one item in the dataset. Sometimes a <em>sample</em> is called an <em>object</em> or <em>item</em>. Usually samples are arranged as <em>rows</em> in tabular datasets (CSV files, Excel spreadsheets, or similar).</li>
+<li>A <strong><em>sample</em></strong> consists of all of the experimental information gathered for one item in the dataset. Sometimes a <em>sample</em> is called an <em>observation</em>, <em>object</em>, or <em>item</em>. Usually samples are arranged as <em>rows</em> in tabular datasets (CSV files, Excel spreadsheets, or similar).</li>
 </ul>
 <p><strong><em>Classification</em></strong> is the process of determining a <em>categorical label</em> given the <em>random variables</em> for a given <em>sample</em>.</p>
 <ul>
@@ -227,7 +227,14 @@ window.Quarto = {
 <li><strong>Linear models</strong>
 <ul>
 <li>As the name implies, linear models imply a linear relationship between input features and the dependent variable: <span class="math inline">\(y=mx+b\)</span>.</li>
-<li>Linear models can be extended to allow the dependent variable to follow a non-normal distribution through the use of a <em>link function</em>. Models of this type are called <em>generalized linear models</em> (GLMs); the Logistic Regression model is a common example.</li>
+<li>Linear models require that all random variables are continuous, and that the following assumptions hold:
+<ol type="1">
+<li>Linearity: The relationship between <span class="math inline">\(x\)</span> and the mean of <span class="math inline">\(y\)</span> is linear.</li>
+<li>Homoscedasticity: The variance of residual is the same for any value of <span class="math inline">\(x\)</span>.</li>
+<li>Independence: Observations are independent of each other.</li>
+<li>Normality: For any fixed value of <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> is normally distributed.</li>
+</ol></li>
+<li>Linear models can be extended to allow the dependent variable to follow a non-normal distribution through the use of a <em>link function</em>. Models of this type are called <em>generalized linear models</em> (GLMs); the <strong><em>Logistic Regression</em></strong> model is a common example.</li>
 </ul></li>
 <li><strong>Kernel-based models</strong>
 <ul>
@@ -288,8 +295,8 @@ window.Quarto = {
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="now-we-need-to-set-up-some-datasets.-you-can-run-these-cells-and-essentially-ignore-the-code-there-for-now-come-back-to-it-later-after-youve-looked-at-the-discussion-of-the-different-metrics-below." class="level4">
-<h4 class="anchored" data-anchor-id="now-we-need-to-set-up-some-datasets.-you-can-run-these-cells-and-essentially-ignore-the-code-there-for-now-come-back-to-it-later-after-youve-looked-at-the-discussion-of-the-different-metrics-below.">Now, we need to set up some datasets. You can run these cells and essentially ignore the code there for now – come back to it later after you’ve looked at the discussion of the different metrics below.</h4>
+<section id="now-we-need-to-set-up-some-datasets.-you-can-run-these-cells-and-ignore-the-code-there-for-now-come-back-to-it-later-after-youve-looked-at-the-discussion-of-the-different-metrics-below." class="level4">
+<h4 class="anchored" data-anchor-id="now-we-need-to-set-up-some-datasets.-you-can-run-these-cells-and-ignore-the-code-there-for-now-come-back-to-it-later-after-youve-looked-at-the-discussion-of-the-different-metrics-below.">Now, we need to set up some datasets. <em>You can run these cells and ignore the code there for now</em> – come back to it later after you’ve looked at the discussion of the different metrics below.</h4>
 <div id="f256fc5e" class="cell" data-outputid="99b6768b-5ca0-4875-dd3f-8670283f66b2" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The classification dataset is "Dry Bean" from https://archive.ics.uci.edu/dataset/602/dry+bean+dataset</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the dataset (but only if it hasn't already been done).</span></span>
@@ -303,49 +310,50 @@ window.Quarto = {
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># We will keep only three classes: "SIRA, CALI, and BOMBAY".</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>beans <span class="op">=</span> beans[beans[<span class="st">"Class"</span>].isin([<span class="st">"SIRA"</span>, <span class="st">"CALI"</span>, <span class="st">"BOMBAY"</span>])]</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Put the label column name and predictor column names in variables:</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>beans_label_col <span class="op">=</span> <span class="st">"Class"</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose only two variables for this tutorial (and not the best ones, by far).</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>beans_var_cols <span class="op">=</span> [<span class="st">"Extent"</span>, <span class="st">"Eccentricity"</span>]</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># We will also create a binary version (one with only two classes).</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>bin_beans <span class="op">=</span> beans.copy()</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>bin_beans.loc[bin_beans[<span class="st">"Class"</span>] <span class="op">!=</span> <span class="st">"SIRA"</span>, <span class="st">"Class"</span>] <span class="op">=</span> <span class="st">"NOT_SIRA"</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a simple 80/20 train/test split:</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>beans_train, beans_test <span class="op">=</span> train_test_split(</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    beans, test_size<span class="op">=</span><span class="fl">0.20</span>, stratify<span class="op">=</span>beans[<span class="st">"Class"</span>], random_state<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>bin_beans_train, bin_beans_test <span class="op">=</span> train_test_split(</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    bin_beans, test_size<span class="op">=</span><span class="fl">0.20</span>, stratify<span class="op">=</span>beans[<span class="st">"Class"</span>], random_state<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>beans_gt <span class="op">=</span> beans_test[beans_label_col].values</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>bin_beans_gt <span class="op">=</span> bin_beans_test[beans_label_col].values</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Print counts of each bean type:</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Counts by class in train set (multiclass):</span><span class="ch">\n</span><span class="sc">{</span>beans_train[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="ch">\n\n</span><span class="ss">Counts by class in test set (multiclass):</span><span class="ch">\n</span><span class="sc">{</span>beans_test[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="ch">\n\n</span><span class="ss">Counts by class in train set (binary):</span><span class="ch">\n</span><span class="sc">{</span>bin_beans_train[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="ch">\n\n</span><span class="ss">Counts by class in test set (binary):</span><span class="ch">\n</span><span class="sc">{</span>bin_beans_test[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple linear (logistic) regression classifier...</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>lm <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># ... And train it on the multiclass problem...</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>lm.fit(beans_train[beans_var_cols], beans_train[beans_label_col])</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>beans_preds <span class="op">=</span> lm.predict(beans_test[beans_var_cols])</span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>beans_probas <span class="op">=</span> lm.predict_proba(beans_test[beans_var_cols])</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>mc_labels <span class="op">=</span> lm.classes_</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co"># ... And also on the binary classification problem.</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>lm.fit(bin_beans_train[beans_var_cols], bin_beans_train[beans_label_col])</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>bin_beans_preds <span class="op">=</span> lm.predict(bin_beans_test[beans_var_cols])</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>bin_beans_probas <span class="op">=</span> lm.predict_proba(bin_beans_test[beans_var_cols])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Put the predictor column names in variables:</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># We will choose only two variables for this tutorial (and not the</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># best ones, by far - it is more interesting to view metrics</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># when a model isn't too perfect).</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>beans_var_cols <span class="op">=</span> [<span class="st">"Extent"</span>, <span class="st">"Eccentricity"</span>]</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># We will also create a binary version (one with only two classes).</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>bin_beans <span class="op">=</span> beans.copy()</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>bin_beans.loc[bin_beans[<span class="st">"Class"</span>] <span class="op">!=</span> <span class="st">"SIRA"</span>, <span class="st">"Class"</span>] <span class="op">=</span> <span class="st">"NOT_SIRA"</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a simple 80% / 20% train/test split:</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>beans_train, beans_test <span class="op">=</span> train_test_split(</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    beans, test_size<span class="op">=</span><span class="fl">0.20</span>, stratify<span class="op">=</span>beans[<span class="st">"Class"</span>], random_state<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>bin_beans_train, bin_beans_test <span class="op">=</span> train_test_split(</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    bin_beans, test_size<span class="op">=</span><span class="fl">0.20</span>, stratify<span class="op">=</span>beans[<span class="st">"Class"</span>], random_state<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Place the ground truth labels in numpy arrays for ease of use later</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>beans_gt <span class="op">=</span> beans_test[<span class="st">'Class'</span>].values</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>bin_beans_gt <span class="op">=</span> bin_beans_test[<span class="st">'Class'</span>].values</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Print counts of each bean type:</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Counts by class in train set (multiclass):</span><span class="ch">\n</span><span class="sc">{</span>beans_train[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="ch">\n\n</span><span class="ss">Counts by class in test set (multiclass):</span><span class="ch">\n</span><span class="sc">{</span>beans_test[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="ch">\n\n</span><span class="ss">Counts by class in train set (binary):</span><span class="ch">\n</span><span class="sc">{</span>bin_beans_train[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"</span><span class="ch">\n\n</span><span class="ss">Counts by class in test set (binary):</span><span class="ch">\n</span><span class="sc">{</span>bin_beans_test[<span class="st">'Class'</span>]<span class="sc">.</span>value_counts()<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple linear (logistic) regression classifier...</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>lm <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co"># ... And train it on the multiclass problem...</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>lm.fit(beans_train[beans_var_cols], beans_train[<span class="st">'Class'</span>])</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>beans_preds <span class="op">=</span> lm.predict(beans_test[beans_var_cols])</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>beans_probas <span class="op">=</span> lm.predict_proba(beans_test[beans_var_cols])</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>mc_labels <span class="op">=</span> lm.classes_</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co"># ... And also on the binary classification problem.</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>lm.fit(bin_beans_train[beans_var_cols], bin_beans_train[<span class="st">'Class'</span>])</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>bin_beans_preds <span class="op">=</span> lm.predict(bin_beans_test[beans_var_cols])</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>bin_beans_probas <span class="op">=</span> lm.predict_proba(bin_beans_test[beans_var_cols])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Counts by class in train set (multiclass):
 Class
@@ -387,26 +395,27 @@ Name: count, dtype: int64</code></pre>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> pd.read_csv(</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"auto-mpg.data"</span>,</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    delim_whitespace<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    sep<span class="op">=</span><span class="st">'\s+'</span>,</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    usecols<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    names<span class="op">=</span>[<span class="st">"mpg"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"weight"</span>],</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    na_values<span class="op">=</span>[<span class="st">"?"</span>],</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>mpg <span class="op">=</span> mpg.dropna(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>mpg_label_col <span class="op">=</span> <span class="st">"mpg"</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>mpg_var_cols <span class="op">=</span> [<span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"weight"</span>]</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># We should really standardize the predictors, but for now, we'll ignore that.</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a simple 80/20 train/test split:</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>mpg_train, mpg_test <span class="op">=</span> train_test_split(mpg, test_size<span class="op">=</span><span class="fl">0.20</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>mpg_gt <span class="op">=</span> mpg_test[mpg_label_col].values</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>rm <span class="op">=</span> LinearRegression()</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>rm.fit(mpg_train[mpg_var_cols], mpg_train[mpg_label_col])</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>mpg_preds <span class="op">=</span> rm.predict(mpg_test[mpg_var_cols])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>mpg_var_cols <span class="op">=</span> [<span class="st">"disp"</span>, <span class="st">"hp"</span>, <span class="st">"weight"</span>]</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># We should really standardize the predictors, but for now, we'll ignore that.</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a simple 80/20 train/test split:</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>mpg_train, mpg_test <span class="op">=</span> train_test_split(mpg, test_size<span class="op">=</span><span class="fl">0.20</span>, random_state<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>mpg_gt <span class="op">=</span> mpg_test[<span class="st">'mpg'</span>].values</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>rm <span class="op">=</span> LinearRegression()</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>rm.fit(mpg_train[mpg_var_cols], mpg_train[<span class="st">'mpg'</span>])</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>mpg_preds <span class="op">=</span> rm.predict(mpg_test[mpg_var_cols])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/lc/rg61fs4569dcvt21xd0nffx40000gn/T/ipykernel_97808/881814137.py:7: FutureWarning: The 'delim_whitespace' keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep='\s+'`` instead
-  mpg = pd.read_csv(</code></pre>
+<pre><code>&lt;&gt;:10: SyntaxWarning: invalid escape sequence '\s'
+&lt;&gt;:10: SyntaxWarning: invalid escape sequence '\s'
+/var/folders/lc/rg61fs4569dcvt21xd0nffx40000gn/T/ipykernel_68070/1930153589.py:10: SyntaxWarning: invalid escape sequence '\s'
+  sep='\s+',</code></pre>
 </div>
 </div>
 </section>
@@ -516,7 +525,7 @@ BA (multiclass): 0.535</code></pre>
 </div>
 </div>
 <ul>
-<li><strong>F1 score (F1)</strong> is the harmonic mean of precision and recall.
+<li><strong>F1 score (F1)</strong> is the harmonic mean of precision and recall. Its is maximized when those metrics are well balanced (and high).
 <ul>
 <li><span class="math inline">\(\frac{2 \mathrm{TP}}{2 \mathrm{TP}+\mathrm{FP}+\mathrm{FN}}\)</span></li>
 </ul></li>
@@ -584,7 +593,7 @@ AUROC (multiclass): 0.786</code></pre>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cf_mat <span class="op">=</span> confusion_matrix(beans_gt, beans_preds)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the confusion matrix using seaborn heatmap</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(font_scale<span class="op">=</span><span class="fl">1.4</span>)  <span class="co"># adjust font size</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>sns.set_theme(font_scale<span class="op">=</span><span class="fl">1.4</span>)  <span class="co"># adjust font size</span></span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>sns.heatmap(</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    cf_mat,</span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    annot<span class="op">=</span><span class="va">True</span>,</span>
@@ -631,6 +640,7 @@ AUROC (multiclass): 0.786</code></pre>
 <ul>
 <li><span class="math inline">\(\operatorname{MSE}(y, \hat{y})=\frac{1}{n_{\text {samples }}} \sum_{i=0}^{n_{\text {samples }}-1}\left(y_i-\hat{y}_i\right)^2\)</span></li>
 <li>MSE is probably the most common regression metric.</li>
+<li>While lower is better, MSE has no meaningful units and can be hard to interpret.</li>
 </ul></li>
 </ul>
 <div id="5564215b" class="cell" data-outputid="c816ac89-5288-4ae5-bc14-cf3b52c33204" data-execution_count="12">
@@ -685,6 +695,8 @@ AUROC (multiclass): 0.786</code></pre>
 </div>
 </div>
 <p>Ideally, you want to see the residuals randomly distributed around the 0 line. If you see a <em>pattern</em> in the residuals, that is an indication that your model isn’t doing a very good job. In our case, <strong>these residuals do not look good</strong> – we may have non-linear behavior, but we are using a simple linear model to make predictions.</p>
+<p>A model that fit its target better would have a residual plot more like the one shown below.</p>
+<p><img src="https://jcausey-astate.github.io/ASRI-2024/images/residual_plot_good.svg" class="img-fluid"></p>
 <p>To solve this, we should probably consider transforming the predictors, the dependent variable, or both. Or, we might want to choose a more complex model than a linear regression model.</p>
 
 
