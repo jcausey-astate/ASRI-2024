@@ -33,8 +33,6 @@
 
 :::
 
-<!--
-
 ## June 12: Choosing and Evaluating Machine Learning Models in Python (Beginner)
 
 ::: {.indented}
@@ -47,7 +45,7 @@
 
 <https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_beginner_choosing_a_model_complete_ASRI24.ipynb>
 
-::: -->
+
 
 :::{#footer}
 2024 [Jason L. Causey](https://jasoncausey.net/cv/){target=_blank},  [Department of Computer Science, Arkansas State University](https://www.astate.edu/college/ecs/computer-science/){target=_blank}. [ORCiD: 0000-0002-3985-2919](https://orcid.org/0000-0002-3985-2919){target=_blank}
