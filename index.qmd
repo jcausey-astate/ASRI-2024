@@ -17,6 +17,8 @@
 
 <https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_intermediate_classification_complete_ASRI24.ipynb>
 
+#### [Non-interactive web version](python_intermediate_classification_complete_ASRI24.html)
+
 :::
 
 ## June 11: Classification in Python (Intermediate)
@@ -30,6 +32,8 @@
 #### Completed version for reference
 
 <https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_intermediate_clustering_complete_ASRI24.ipynb>
+
+#### [Non-interactive web version](python_intermediate_clustering_complete_ASRI24.html)
 
 :::
 
@@ -45,7 +49,9 @@
 
 <https://colab.research.google.com/github/jcausey-astate/ASRI-2024/blob/main/python_beginner_choosing_a_model_complete_ASRI24.ipynb>
 
+#### [Non-interactive web version](python_beginner_choosing_a_model_complete_ASRI24.html)
 
+:::
 
 :::{#footer}
 2024 [Jason L. Causey](https://jasoncausey.net/cv/){target=_blank},  [Department of Computer Science, Arkansas State University](https://www.astate.edu/college/ecs/computer-science/){target=_blank}. [ORCiD: 0000-0002-3985-2919](https://orcid.org/0000-0002-3985-2919){target=_blank}
